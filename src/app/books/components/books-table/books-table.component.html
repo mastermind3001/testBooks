@@ -1,0 +1,42 @@
+<table class="table table-head-custom table-vertical-center">
+  <thead>
+  <tr>
+    <th>
+      <div class="text-nowrap">ID</div>
+    </th>
+    <th>
+      <div class="text-nowrap">Автор</div>
+    </th>
+    <th>
+      <div class="text-nowrap">Имя</div>
+    </th>
+    <th>
+      <div class="text-nowrap">Издательство</div>
+    </th>
+    <th>
+      <div class="text-nowrap">Год</div>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of books">
+    <td>
+      <div class="text-nowrap">{{book.id}}</div>
+    </td>
+    <td>
+      <div class="text-nowrap">{{book.author.surname + ' ' + book.author.name + ' ' + book.author.lastname}} </div>
+    </td>
+    <td>
+      <div class="text-nowrap">{{book.publisher}}</div>
+    </td>
+    <td>
+      <div class="text-nowrap">{{book.year}}</div>
+    </td>
+  </tr>
+
+
+
+  </tbody>
+
+
+</table>

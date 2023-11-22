@@ -1,1 +1,4 @@
-<p>books-page works!</p>
+<div class="content">
+  <app-book-form></app-book-form>
+  <app-books-table [books]="booksService.getBooks() | async"></app-books-table>
+</div>

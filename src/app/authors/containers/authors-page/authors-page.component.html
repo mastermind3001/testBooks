@@ -1,1 +1,4 @@
-<p>authors-page works!</p>
+<div class="content">
+    <app-author-form></app-author-form>
+    <app-authors-table [authors]="authorsService.getAuthors() | async"></app-authors-table>
+</div>

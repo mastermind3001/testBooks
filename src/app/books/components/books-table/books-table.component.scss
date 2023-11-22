@@ -1,0 +1,17 @@
+:host {
+  max-width: 100%;
+  display: block;
+  margin: 10px auto 100px;
+}
+
+
+table {
+  height: fit-content;
+  border: 1px dashed #333;
+  margin: 0 auto;
+}
+
+th, td {
+  border: 1px solid gray;
+  padding: 5px;
+}

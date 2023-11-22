@@ -13,11 +13,35 @@ $color-primary-darker: #007BFFCC;
   box-sizing: inherit;
 }
 
+html, body {
+  height: 100%;
+}
 
 body {
-  font-family: 'Roboto Light', sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: $color-primary;
 }
+
+
+//// Base
+//.btn {
+//  border: none;
+//  border-radius: 10px;
+//  padding: 10px;
+//  color: white;
+//  background: $color-primary;
+//}
+//
+//.btn-success {
+//  background: #65fcc4;
+//
+//  &:hover {
+//
+//    background: aquamarine;
+//    cursor: pointer;
+//  }
+//}
 

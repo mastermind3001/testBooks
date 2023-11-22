@@ -13,6 +13,11 @@ import {ToastrModule} from "ngx-toastr";
 import {environment} from "../environments/environment";
 import {AppRoutingModule} from "./app-routing.module";
 import {HeaderComponent} from "./core/components/header/header.component";
+import {AuthorsModule} from "./authors/authors.module";
+import {BooksModule} from "./books/books.module";
+import {CoreModule} from "./core/core.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 
@@ -20,6 +25,11 @@ import {HeaderComponent} from "./core/components/header/header.component";
   declarations: [AppComponent],
   imports: [
     CommonModule,
+    AuthorsModule,
+    BooksModule,
+    CoreModule,
+    FlexLayoutModule,
+    NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
