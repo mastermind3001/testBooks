@@ -19,10 +19,10 @@ export function authorExistsValidator(author: AuthorsService): AsyncValidatorFn 
 
               let newName = value.name.trim() + value.surname.trim() + value.lastname.trim();
               let authorName = author.name.trim() + author.surname.trim() + author.lastname.trim();
-              let birthday = value.birthday;
-              if (authorName === newName
 
-                || authorBirthday.toString() === newBirthday.toString() ) {
+              if ((authorName == newName)
+
+                && (authorBirthday.toString() == newBirthday.toString()) ) {
                 isContains = true;
                 break;
               }

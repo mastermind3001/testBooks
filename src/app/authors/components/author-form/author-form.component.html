@@ -1,4 +1,7 @@
-<form [formGroup]="fb">
+<form [formGroup]="fb" fxLayout="row wrap"
+      fxLayout.xs="column"
+      fxLayoutAlign="flex-start"
+>
   <div class="form-group row">
     <div class=" col-lg-12" fxLayout="column wrap"
          fxLayout.xs="column"
@@ -9,10 +12,9 @@
         <input
           formControlName="surname"
           matInput
-          placeholder="Enter surname"/>
+          placeholder="Напишите фамилию"/>
         <mat-error *ngIf="surname.hasError('required')">Поле обязательно</mat-error>
         <mat-error *ngIf="surname.hasError('maxlength')">Размер поля не более - 10 букв</mat-error>
-        <mat-error *ngIf="fb.hasError('authorExists')">Автор должен быть уникален - измените дату рождения или имя</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -22,10 +24,9 @@
         <input
           formControlName="name"
           matInput
-          placeholder="Enter name"/>
+          placeholder="Напишите имя"/>
         <mat-error *ngIf="name.hasError('required')">Поле обязательно</mat-error>
         <mat-error *ngIf="name.hasError('maxlength')">Размер поля не более - 10 букв</mat-error>
-        <mat-error *ngIf="fb.hasError('authorExists')">Автор должен быть уникален - измените дату рождения или имя</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -35,17 +36,16 @@
         <input
           formControlName="lastname"
           matInput
-          placeholder="Enter lastname"/>
+          placeholder="Напишите отчество"/>
         <mat-error *ngIf="lastname.hasError('required')">Поле обязательно</mat-error>
         <mat-error *ngIf="lastname.hasError('maxlength')">Размер поля не более - 10 букв</mat-error>
-        <mat-error *ngIf="fb.hasError('authorExists')">Автор должен быть уникален - измените дату рождения или имя</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Дата рождения</mat-label>
         <input
           formControlName="birthday"
-          placeholder="DD/MM/YYYY"
+          placeholder="Выберите дату"
           required
           matInput  [matDatepicker]="picker"
           [disabled]="true"
@@ -55,15 +55,18 @@
         <mat-datepicker #picker [disabled]="false"></mat-datepicker>
         <mat-error *ngIf="birthday.hasError('required')">Поле обязательно</mat-error>
         <mat-error *ngIf="birthday.hasError('maxlength')">Размер поля не более - 10 букв</mat-error>
-        <mat-error *ngIf="fb.hasError('authorExists')">Автор должен быть уникален - измените дату рождения или имя</mat-error>
       </mat-form-field>
-
+      <span class="text-danger" *ngIf="fb.hasError('authorExists')">
+         Автор должен быть уникален - измените дату рождения или ФИО
+      </span>
     </div>
   </div>
 
   <div fxLayout="row wrap"
        fxLayout.xs="column"
-       fxLayoutAlign="center">
+       fxLayoutAlign="center center"
+       [style.margin-left]="'5px'"
+  >
     <button
       (click)="sendAuthorStorage()"
       [disabled]="disabled"

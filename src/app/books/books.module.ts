@@ -8,7 +8,7 @@ import {BookFormComponent} from "./components/book-form/book-form.component";
 import {BooksTableComponent} from "./components/books-table/books-table.component";
 import {BooksPageComponent} from "./containers/books-page/books-page.component";
 
-const COMPONENTS = [BookFormComponent, BooksTableComponent, BooksPageComponent];
+const COMPONENTS = [BooksPageComponent, BookFormComponent, BooksTableComponent, ];
 
 @NgModule({
   declarations: [...COMPONENTS,],

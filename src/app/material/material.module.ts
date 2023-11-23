@@ -9,6 +9,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -23,6 +24,7 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
     MatDatepickerModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
+    MatSelectModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })

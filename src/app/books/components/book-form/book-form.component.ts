@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
   AbstractControl,
@@ -10,11 +10,10 @@ import {
   Validators
 } from "@angular/forms";
 import {Author} from "../../../core/models/author.model";
-import {Subject, takeUntil} from "rxjs";
-import { v4 as uuidv4 } from 'uuid';
+import {Observable, Subject, takeUntil} from "rxjs";
+import {v4 as uuidv4} from 'uuid';
 import {bookExistsValidator} from "../../containers/books-page/unique-book-validator";
 import {BooksService} from "../../services/books.service";
-
 
 
 @Component({
@@ -27,13 +26,14 @@ export class BookFormComponent implements OnInit, OnDestroy,
   ControlValueAccessor, Validator {
   fb: FormGroup;
   private destroyed = new Subject<void>();
+  @Input() authors: Author[] | null = [];
 
   constructor(private book: BooksService) {
     this.fb = new FormGroup({
         author: new FormControl(
           "",
           {
-            validators: [Validators.required, Validators.maxLength(10)],
+            validators: [Validators.required,],
           }),
         name: new FormControl('',
           [Validators.required, Validators.maxLength(10)]),
@@ -64,14 +64,16 @@ export class BookFormComponent implements OnInit, OnDestroy,
   }
 
   ngOnDestroy(): void {
-    this.destroyed.next();
-    this.destroyed.complete();
+    // this.destroyed.next();
+    // this.destroyed.complete();
   }
 
   ngOnInit(): void {
-    this.fb.valueChanges.pipe(takeUntil(this.destroyed)).subscribe(value => {
-      console.log(this.fb.errors);
-    });
+    // this.fb.valueChanges.pipe(takeUntil(this.destroyed)).subscribe(value => {
+    //   console.log(this.fb.errors);
+    // });
+
+    console.log(this.authors);
   }
 
   onChange = (_: any) => null;
@@ -88,7 +90,6 @@ export class BookFormComponent implements OnInit, OnDestroy,
 
   writeValue(obj: any): void {
     if (obj) {
-
 
       this.fb.patchValue({
         author: obj.author,
@@ -108,7 +109,10 @@ export class BookFormComponent implements OnInit, OnDestroy,
     }
     books.push({
       id: uuidv4(), // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
-      ...this.fb.value
+      ...this.fb.value,
+      author: this.authors?.find((item) =>
+        item.id === this.author.value
+      )
     });
 
 
@@ -126,6 +130,6 @@ export class BookFormComponent implements OnInit, OnDestroy,
   }
 
   get disabled(): boolean {
-    return !!this.fb.errors;
+    return this.fb.invalid;
   };
 }

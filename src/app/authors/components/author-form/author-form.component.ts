@@ -62,14 +62,14 @@ export class AuthorFormComponent implements OnInit, OnDestroy,
   }
 
   ngOnDestroy(): void {
-    this.destroyed.next();
-    this.destroyed.complete();
+    // this.destroyed.next();
+    // this.destroyed.complete();
   }
 
   ngOnInit(): void {
-    this.fb.valueChanges.pipe(takeUntil(this.destroyed)).subscribe(value => {
-      console.log(this.fb.errors);
-    });
+    // this.fb.valueChanges.pipe(takeUntil(this.destroyed)).subscribe(value => {
+    //   // console.log(this.fb.errors);
+    // });
   }
 
   onChange = (_: any) => null;
@@ -109,9 +109,18 @@ export class AuthorFormComponent implements OnInit, OnDestroy,
       ...this.fb.value
     });
 
+    authors.sort((a: Author, b: Author) => {
+      if (a.surname < b.surname) {
+        return -1;
+      }
+      if (a.surname > b.surname) {
+        return 1;
+      }
+      return 0;
+    });
+
 
     localStorage.setItem("authors", JSON.stringify(authors))
-    console.log(authors);
     this.fb.reset();
     this.fb.setErrors(null);
     for (let controlsKey in this.fb.controls) {
@@ -124,6 +133,6 @@ export class AuthorFormComponent implements OnInit, OnDestroy,
   }
 
   get disabled(): boolean {
-    return !!this.fb.errors;
+    return this.fb.invalid;
   };
 }

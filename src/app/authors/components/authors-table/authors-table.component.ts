@@ -10,4 +10,7 @@ import {Author} from "../../../core/models/author.model";
 })
 export class AuthorsTableComponent {
   @Input() authors: Author[] | null = null;
+  constructor() {
+    console.log(this.authors);
+  }
 }
