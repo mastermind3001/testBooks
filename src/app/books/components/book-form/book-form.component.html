@@ -9,10 +9,10 @@
         <mat-label>Выберите одного</mat-label>
         <mat-select formControlName="author">
           <mat-option [value]="author.id"
-            *ngFor="let author of authors">
+                      *ngFor="let author of authors">
             {{author.surname + '' + author.name + '' + author.lastname}}
           </mat-option>
-          </mat-select>
+        </mat-select>
         <mat-hint>Выберите автора!</mat-hint>
         <mat-error *ngIf="author.hasError('required')">Вам нужно выбрать!</mat-error>
 
@@ -28,7 +28,7 @@
           placeholder="Введите название"/>
         <mat-error *ngIf="name.hasError('required')">Поле обязательно</mat-error>
         <mat-error *ngIf="name.hasError('maxlength')">Размер поля не более - 10 букв</mat-error>
-     </mat-form-field>
+      </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Издательство
@@ -42,21 +42,11 @@
         <mat-error *ngIf="publisher.hasError('maxlength')">Размер поля не более - 20 букв</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Год</mat-label>
-        <input
-          formControlName="year"
-          placeholder="Выберите год"
-          required
-          matInput  [matDatepicker]="picker"
-          [disabled]="true"
+      <app-year-datepicker
+        (sendYear)="setYear($event)"
+        [isRequired]="year.hasError('required')"
+      ></app-year-datepicker>
 
-        />
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker [disabled]="false"></mat-datepicker>
-        <mat-error *ngIf="year.hasError('required')">Поле обязательно</mat-error>
-        <mat-error *ngIf="year.hasError('maxlength')">Размер поля не более - 10 букв</mat-error>
-      </mat-form-field>
       <span class="text-danger" *ngIf="fb.hasError('bookExists')">
          Книга должа быть уникальна - измените дату издательства или название
       </span>
@@ -78,5 +68,5 @@
     </button>
   </div>
 
-<!--  [ngClass]="{ 'spinner spinner-white spinner-left': loading }"-->
+  <!--  [ngClass]="{ 'spinner spinner-white spinner-left': loading }"-->
 </form>

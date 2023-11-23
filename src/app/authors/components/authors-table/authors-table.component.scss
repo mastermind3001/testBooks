@@ -2,7 +2,12 @@
   max-width: 100%;
   display: block;
   margin: 10px auto 100px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 }
+
 
 
 table {
@@ -14,4 +19,9 @@ table {
 th, td {
   border: 1px solid gray;
   padding: 5px;
+}
+
+.header {
+  text-align: center;
+  margin: 0 auto;
 }

@@ -14,14 +14,14 @@ export function bookExistsValidator(book: BooksService): AsyncValidatorFn {
           let isContains = false;
           if (books) {
             for (let book of books) {
-              let bookYear = formatDate(book.year, 'YYYY', 'en-GB');
-              let newYear = formatDate(value.year, 'YYYY', 'en-GB');
+              let bookYear = formatDate(book?.year, 'YYYY', 'en-GB');
+              let newYear = formatDate(value?.year, 'YYYY', 'en-GB');
 
-              let newName = value.name.trim();
-              let bookName = book.name.trim();
+              let newName = value.name?.trim();
+              let bookName = book.name?.trim();
               if (bookName === newName
 
-                || bookYear.toString() === newYear.toString()) {
+                && bookYear.toString() === newYear.toString()) {
                 isContains = true;
                 break;
               }

@@ -7,8 +7,14 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BookFormComponent} from "./components/book-form/book-form.component";
 import {BooksTableComponent} from "./components/books-table/books-table.component";
 import {BooksPageComponent} from "./containers/books-page/books-page.component";
+import {YearDatepickerComponent} from "./components/year-datepicker/year-datepicker.component";
 
-const COMPONENTS = [BooksPageComponent, BookFormComponent, BooksTableComponent, ];
+const COMPONENTS = [
+  BooksPageComponent,
+  BookFormComponent,
+  BooksTableComponent,
+  YearDatepickerComponent
+];
 
 @NgModule({
   declarations: [...COMPONENTS,],

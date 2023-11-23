@@ -1,25 +1,26 @@
-<table class="table table-head-custom table-vertical-center">
+<h3 class="header">Книги</h3>
+<table class="table table-head-custom table-vertical-center" matSort (matSortChange)="sortData($event)">
   <thead>
   <tr>
     <th>
       <div class="text-nowrap">ID</div>
     </th>
-    <th>
+    <th mat-sort-header="author">
       <div class="text-nowrap">Автор</div>
     </th>
-    <th>
+    <th mat-sort-header="name">
       <div class="text-nowrap">Имя</div>
     </th>
-    <th>
+    <th mat-sort-header="publisher">
       <div class="text-nowrap">Издательство</div>
     </th>
-    <th>
+    <th mat-sort-header="year">
       <div class="text-nowrap">Год</div>
     </th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let book of books">
+  <tr *ngFor="let book of sortedData">
     <td>
       <div class="text-nowrap">{{book.id}}</div>
     </td>

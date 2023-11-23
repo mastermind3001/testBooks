@@ -63,6 +63,7 @@ export class BookFormComponent implements OnInit, OnDestroy,
     return this.fb.get('year') as AbstractControl;
   }
 
+
   ngOnDestroy(): void {
     // this.destroyed.next();
     // this.destroyed.complete();
@@ -132,4 +133,10 @@ export class BookFormComponent implements OnInit, OnDestroy,
   get disabled(): boolean {
     return this.fb.invalid;
   };
+
+  protected readonly FormControl = FormControl;
+
+  setYear($event: number) {
+    this.year.setValue($event);
+  }
 }
